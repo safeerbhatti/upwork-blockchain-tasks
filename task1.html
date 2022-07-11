@@ -1,0 +1,26 @@
+<script>
+    function getVowels(str) {
+        var m = str.match(/[aeiou]/gi);
+        return m === null ? 0 : m.length;
+    }
+
+    const sent = "Smart people learn from everything. and everyone, average people from their experience, stupid people already, have all the answers";
+
+    const words = sent.split(' ').map(x => x.replace(/[,.\s]/g, ''));
+
+    const bigWords = words.sort((a, b) => {
+        return b.length - a.length;
+    })
+
+    const bigWord = bigWords.reduce((longestWord, currentWord) => {
+        if(longestWord.length == currentWord.length)
+            return getVowels(longestWord) > getVowels(currentWord) ? longestWord : currentWord;
+        else if(longestWord.length > currentWord.length)
+            return longestWord;
+        else
+            return currentWord;
+    })
+
+    console.log(bigWord)
+
+</script>

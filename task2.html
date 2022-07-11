@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<style>
+    h2{
+        color:blue;
+    }
+</style>
+<body>
+
+<h2>JavaScript HTML DOM</h2>
+
+<div id="main">
+    <p>Finding HTML Elements by Tag Name</p>
+    <p>This example demonstrates the <b>getElementsByTagName</b> method.</p>
+</div>
+
+<p id="demo"></p>
+
+<button class="btn" data-id="0">Button 1</button>
+<button class="btn" data-id="1">Button 2</button>
+
+<script>
+    const x = document.getElementById("main");
+    const y = x.getElementsByTagName("p");
+
+    const btns = document.querySelectorAll(".btn");
+
+    for (let i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            const id = btns[i].dataset.id;
+            document.getElementById("demo").innerHTML =
+                'The first paragraph (index '+id+') inside "main" is: ' + y[id].innerHTML;
+        });
+    }
+
+</script>
+
+</body>
+</html>
